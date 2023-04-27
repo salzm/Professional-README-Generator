@@ -9,7 +9,7 @@ const questions = [
   {
     type: "input",
     name: "title",
-    message: "Please name your Project",
+    message: "Please name your Project. ",
   },
 
   {
@@ -69,19 +69,17 @@ const questions = [
   },
 ];
 
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//   return fs.writeSync(path.append(process.cwd(), fileName), data);
-// }
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+  return fs.writeSync(path.join(process.cwd(), fileName), data);
+}
 
-// // TODO: Create a function to initialize app
-// function init() {
-//   inquirer.prompt(questions).then(responses);
-//   {
-//     console.log("Generating Professional README.md file for user.....");
-//     writeToFile("./Develop/README.md", generateMarkdown({ ...responses }));
-//   }
-// }
-
-// // Function call to initialize app
-// init();
+// TODO: Create a function to initialize app
+function init() {
+  inquirer.prompt(questions).then((responses) => {
+    console.log("Creating Professional Readme for user.....");
+    writeToFile("./README.md", generateMarkdown({ ...responses }));
+  });
+}
+// Function call to initialize app
+init();
