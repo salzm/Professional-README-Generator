@@ -34,13 +34,14 @@ const questions = [
   {
     type: "input",
     name: "usage",
-    message: "State the languages or technologies assoicated with this project",
+    message:
+      "State the languages or technologies assoicated with this project of yours",
   },
 
   {
     type: "input",
     name: "creator",
-    message: "write your Github username.",
+    message: "Write your Github username.",
   },
 
   {
@@ -59,7 +60,7 @@ const questions = [
     type: "input",
     name: "contributors",
     message:
-      "Please list any contributors to the project! (Name of Github Usernames)",
+      "Please list any contributors to the project! (Name of Github Username)",
   },
 
   {
@@ -71,14 +72,14 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  return fs.writeSync(path.join(process.cwd(), fileName), data);
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
 // TODO: Create a function to initialize app
 function init() {
   inquirer.prompt(questions).then((responses) => {
     console.log("Creating Professional Readme for user.....");
-    writeToFile("./README.md", generateMarkdown({ ...responses }));
+    writeToFile("./dist/README.md", generateMarkdown({ ...responses }));
   });
 }
 // Function call to initialize app
